@@ -3,25 +3,34 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'KerjaKarsa - Job Portal untuk Sektor Informal',
-  description: 'Platform terpercaya untuk menemukan dan mengerjakan jasa dari profesional di sektor informal.',
-  generator: 'v0.app',
+  title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
+  description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
   icons: {
-    icon: [
+    icon: '/icon.png',
+    apple: '/icon.png',
+  },
+  // Konfigurasi OpenGraph agar saat di-share ke WhatsApp/Sosmed judul, deskripsi, dan logonya ikut tampil
+  openGraph: {
+    title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
+    description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
+    url: 'https://kerjakarsa.vercel.app', // Sesuaikan dengan domain deployment kamu nantinya
+    siteName: 'Kerjakarsa',
+    images: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: 'https://kerjakarsa.vercel.app/icon.png', // Harus URL absolut/lengkap agar terbaca oleh WhatsApp
+        width: 1200,
+        height: 630,
+        alt: 'Kerjakarsa App Logo',
       },
     ],
-    apple: '/apple-icon.png',
+    locale: 'id_ID',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
+    description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
+    images: ['https://kerjakarsa.vercel.app/icon.png'],
   },
 }
 
