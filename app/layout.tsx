@@ -9,15 +9,15 @@ export const metadata: Metadata = {
     icon: '/icon.png',
     apple: '/icon.png',
   },
-  // Konfigurasi OpenGraph agar saat di-share ke WhatsApp/Sosmed judul, deskripsi, dan logonya ikut tampil
+  // Tambahkan ini agar saat di-share ke WhatsApp/Sosmed logonya ikut ganti
   openGraph: {
     title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
     description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
-    url: 'https://kerjakarsa.vercel.app', // Sesuaikan dengan domain deployment kamu nantinya
+    url: 'https://kerjakarsa.vercel.app',
     siteName: 'Kerjakarsa',
     images: [
       {
-        url: 'https://kerjakarsa.vercel.app/icon.png', // Harus URL absolut/lengkap agar terbaca oleh WhatsApp
+        url: 'https://kerjakarsa.vercel.app/icon.png', // Harus URL absolut/lengkap agar dibaca WhatsApp
         width: 1200,
         height: 630,
         alt: 'Kerjakarsa App Logo',
@@ -33,7 +33,6 @@ export const metadata: Metadata = {
     images: ['https://kerjakarsa.vercel.app/icon.png'],
   },
 }
-
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: [
