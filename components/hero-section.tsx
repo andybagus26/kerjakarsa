@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Mic, Star, Wallet } from 'lucide-react'
 
 export function HeroSection() {
@@ -75,7 +76,7 @@ export function HeroSection() {
           {/* Right Visual - 40% Bento Cards */}
           <div className="relative h-96">
             {/* Rating Card - Top Right */}
-            <div className="absolute top-0 right-0 bg-white rounded-2xl p-4 shadow-sm border border-stone-200 w-48">
+            <div className="absolute top-0 right-0 bg-white rounded-2xl p-4 shadow-sm border border-stone-200 w-48 z-10">
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -88,7 +89,7 @@ export function HeroSection() {
             </div>
 
             {/* Wage Card - Bottom Left */}
-            <div className="absolute bottom-0 left-0 bg-white rounded-2xl p-4 shadow-sm border border-stone-200 w-48">
+            <div className="absolute bottom-0 left-0 bg-white rounded-2xl p-4 shadow-sm border border-stone-200 w-48 z-10">
               <div className="flex items-center gap-2 mb-2">
                 <Wallet size={20} className="text-teal-700" />
                 <span className="font-bold text-stone-900">Rp 250.000</span>
@@ -96,9 +97,16 @@ export function HeroSection() {
               <p className="text-xs text-stone-600">Upah harian rata-rata</p>
             </div>
 
-            {/* Center Decorative Circle */}
+            {/* Center Decorative Circle (Diperbarui dengan Next/Image) */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-32 h-32 bg-gradient-to-br from-teal-100 to-amber-50 rounded-3xl shadow-lg"></div>
+              <div className="w-100 h-100 relative rounded-3xl shadow-lg overflow-hidden border border-stone-200 bg-white">
+                <Image
+                  src="/gambarlanding.png" /* <-- Jangan lupa ubah ini sesuai nama file gambarmu di folder public */
+                  alt="Ilustrasi Jasa"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
