@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E" />
+      <stop offset="100%" stop-color="#042F2E" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="100" height="100" rx="28" fill="url(#tealGrad)" />
+
+  <!-- Vertical Pillar -->
+  <path d="M 32 26 C 32 22, 38 22, 38 26 L 38 74 C 38 78, 32 78, 32 74 Z" fill="#FFFFFF" />
+  
+  <!-- Upper Diagonal Hand -->
+  <path d="M 38 50 L 62 26 C 65 23, 71 27, 67 31 L 46 54 Z" fill="#FFFFFF" />
+  
+  <!-- Lower Diagonal Spark -->
+  <path d="M 42 48 L 65 71 C 69 75, 63 80, 59 76 L 37 54 Z" fill="url(#amberGrad)" />
+
+  <!-- AI Sparkle -->
+  <path d="M 74 20 L 76 25 L 81 27 L 76 29 L 74 34 L 72 29 L 67 27 L 72 25 Z" fill="url(#amberGrad)" />
+</svg>

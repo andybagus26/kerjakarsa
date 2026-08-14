@@ -34,8 +34,12 @@ export function Navbar() {
       {/* Mobile Navbar */}
       <nav className="md:hidden sticky top-0 z-50 bg-white border-b border-stone-200 shadow-sm">
         <div className="px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-xl font-bold text-teal-700">
-            KerjaKarsa
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src="/logo-icon.svg" alt="KerjaKarsa Logo" className="w-8 h-8" />
+            <span className="text-xl font-extrabold tracking-tight">
+              <span className="text-teal-700">Kerja</span>
+              <span className="text-amber-500">Karsa</span>
+            </span>
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -94,8 +98,12 @@ export function Navbar() {
       {/* Desktop Navbar */}
       <nav className="hidden md:block sticky top-0 z-50 bg-white border-b border-stone-200 shadow-sm">
         <div className="mx-auto max-w-7xl px-8 h-16 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-teal-700">
-            KerjaKarsa
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src="/logo-icon.svg" alt="KerjaKarsa Logo" className="w-9 h-9" />
+            <span className="text-2xl font-extrabold tracking-tight">
+              <span className="text-teal-700">Kerja</span>
+              <span className="text-amber-500">Karsa</span>
+            </span>
           </Link>
 
           {/* Center Links */}
