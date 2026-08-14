@@ -1,49 +1,125 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 320" width="100%" height="100%">
   <defs>
-    <!-- Teal Gradient for Icon Base -->
-    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0F766E" />
-      <stop offset="100%" stop-color="#042F2E" />
+    <!-- Background Lens Flare Gradients -->
+    <radialGradient id="bgGlow" cx="30%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#14532D" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#0F766E" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#0F172A" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glassmorphism Teal Base Badge -->
+    <linearGradient id="glassTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14B8A6" stop-opacity="0.85" />
+      <stop offset="35%" stop-color="#0D9488" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0F4C5C" stop-opacity="0.98" />
     </linearGradient>
-    
-    <!-- Amber Accent Gradient -->
-    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <!-- Glossy Rim Highlight -->
+    <linearGradient id="rimHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5EEAD4" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#2DD4BF" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#0F766E" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- 3D Gold Gradient for "K" and Star -->
+    <linearGradient id="gold3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="25%" stop-color="#EAB308" />
+      <stop offset="65%" stop-color="#CA8A04" />
+      <stop offset="100%" stop-color="#854D0E" />
+    </linearGradient>
+
+    <!-- 3D Gold Specular Highlight -->
+    <linearGradient id="goldSpec" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#EAB308" />
+      <stop offset="100%" stop-color="#A16207" />
+    </linearGradient>
+
+    <!-- 3D Text Teal Gradient (Kerja) -->
+    <linearGradient id="textTeal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="30%" stop-color="#22D3EE" />
+      <stop offset="70%" stop-color="#0D9488" />
+      <stop offset="100%" stop-color="#065F46" />
+    </linearGradient>
+
+    <!-- 3D Text Orange/Gold Gradient (Karsa) -->
+    <linearGradient id="textOrange" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#FBBF24" />
-      <stop offset="100%" stop-color="#D97706" />
+      <stop offset="35%" stop-color="#F59E0B" />
+      <stop offset="75%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
     </linearGradient>
-    
-    <!-- Subtle Drop Shadow -->
-    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#0F766E" flood-opacity="0.25" />
+
+    <!-- Drop Shadows -->
+    <filter id="badgeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.5" />
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0D9488" flood-opacity="0.3" />
+    </filter>
+
+    <filter id="goldShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+
+    <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.4" />
     </filter>
   </defs>
 
-  <!-- Logo Mark (Badge Icon) -->
-  <g transform="translate(10, 10)">
-    <!-- Shield / Rounded Box Base -->
-    <rect x="0" y="0" width="100" height="100" rx="28" fill="url(#tealGrad)" filter="url(#shadow)" />
+  <!-- Ambient Light Glow -->
+  <rect width="750" height="320" rx="20" fill="none" />
+  <circle cx="160" cy="160" r="160" fill="url(#bgGlow)" />
 
-    <!-- Stylized "K" Hands / Sparks Icon -->
-    <!-- Vertical Pillar -->
-    <path d="M 32 26 C 32 22, 38 22, 38 26 L 38 74 C 38 78, 32 78, 32 74 Z" fill="#FFFFFF" />
+  <!-- === LEFT: 3D GLASSMORPHIC APP BADGE ICON === -->
+  <g transform="translate(30, 30)" filter="url(#badgeShadow)">
+    <!-- Outer Glossy Glass Rim -->
+    <rect x="0" y="0" width="260" height="260" rx="64" fill="url(#rimHighlight)" />
     
-    <!-- Upper Diagonal Hand (Teal-White) -->
-    <path d="M 38 50 L 62 26 C 65 23, 71 27, 67 31 L 46 54 Z" fill="#FFFFFF" />
-    
-    <!-- Lower Diagonal Spark (Amber Accent) -->
-    <path d="M 42 48 L 65 71 C 69 75, 63 80, 59 76 L 37 54 Z" fill="url(#amberGrad)" />
+    <!-- Inner Glass Body -->
+    <rect x="5" y="5" width="250" height="250" rx="60" fill="url(#glassTeal)" opacity="0.95" />
 
-    <!-- AI / Craft Spark Icon (Top Right) -->
-    <path d="M 74 20 L 76 25 L 81 27 L 76 29 L 74 34 L 72 29 L 67 27 L 72 25 Z" fill="url(#amberGrad)" />
+    <!-- Inner Reflection Curved Line -->
+    <path d="M 25 65 Q 130 15 235 65" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+
+    <!-- 3D GOLDEN LETTER 'K' WITH ROUNDED CAPS -->
+    <g filter="url(#goldShadow)">
+      <!-- Vertical Stem -->
+      <rect x="72" y="65" width="28" height="130" rx="14" fill="url(#gold3D)" />
+      <rect x="75" y="68" width="10" height="124" rx="5" fill="#FEF08A" opacity="0.35" />
+
+      <!-- Upper Diagonal Arm -->
+      <path d="M 90 135 L 155 72 C 161 66, 172 71, 168 79 L 108 145 Z" fill="url(#goldSpec)" />
+
+      <!-- Lower Diagonal Arm -->
+      <path d="M 94 125 L 160 190 C 166 196, 157 204, 150 198 L 86 135 Z" fill="url(#gold3D)" />
+
+      <!-- 4-POINT SPARKLE STAR (TOP RIGHT OF K) -->
+      <path d="M 175 78 Q 175 66 185 66 Q 175 66 175 54 Q 175 66 165 66 Q 175 66 175 78 Z" fill="url(#goldSpec)" filter="url(#goldShadow)" />
+      <circle cx="175" cy="66" r="3" fill="#FFFFFF" />
+    </g>
   </g>
 
-  <!-- Logo Text Typography -->
-  <g transform="translate(130, 72)">
-    <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="48" letter-spacing="-1">
-      <tspan fill="#0F766E">Kerja</tspan>
-      <tspan fill="#F59E0B">Karsa</tspan>
-    </text>
-    <text y="22" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="600" font-size="14" fill="#64748B" letter-spacing="1">
+  <!-- === RIGHT: STACKED 3D TYPOGRAPHY === -->
+  <g transform="translate(325, 30)" filter="url(#textShadow)">
+    <!-- 1ST LINE: KERJA (3D TEAL EMBOSSED) -->
+    <g transform="translate(0, 105)">
+      <!-- 3D Extrusion Shadow -->
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="102" fill="#042F2E" x="3" y="3" letter-spacing="-1">Kerja</text>
+      <!-- Main Gradient Text -->
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="102" fill="url(#textTeal)" letter-spacing="-1">Kerja</text>
+    </g>
+
+    <!-- 2ND LINE: KARSA (3D ORANGE-GOLD EMBOSSED) -->
+    <g transform="translate(0, 205)">
+      <!-- 3D Extrusion Shadow -->
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="102" fill="#78350F" x="3" y="3" letter-spacing="-1">Karsa</text>
+      <!-- Main Gradient Text -->
+      <text font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="102" fill="url(#textOrange)" letter-spacing="-1">Karsa</text>
+    </g>
+
+    <!-- 3RD LINE: SUBTITLE (EKOSISTEM PEKERJA INFORMAL DIGITAL) -->
+    <text x="4" y="248" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="18" fill="#E2E8F0" letter-spacing="2.5" opacity="0.95">
       EKOSISTEM PEKERJA INFORMAL DIGITAL
     </text>
   </g>
