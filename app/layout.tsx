@@ -3,24 +3,26 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
-  description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
+  title: 'KerjaKarsa - Ekosistem Kolaborasi & Pemberdayaan Pekerja Informal',
+  description: 'Platform digital terintegrasi untuk memberdayakan pekerja informal dan menggerakkan ekonomi digital Indonesia',
   icons: {
-    icon: '/icon.png',
-    apple: '/icon.png',
+    icon: [
+      { url: '/logo-icon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/logo-icon.svg',
+    apple: '/logo-icon.svg',
   },
-  // Tambahkan ini agar saat di-share ke WhatsApp/Sosmed logonya ikut ganti
   openGraph: {
-    title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
-    description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
-    url: 'https://kerjakarsa.vercel.app',
-    siteName: 'Kerjakarsa',
+    title: 'KerjaKarsa - Ekosistem Kolaborasi & Pemberdayaan Pekerja Informal',
+    description: 'Platform digital terintegrasi untuk memberdayakan pekerja informal dan menggerakkan ekonomi digital Indonesia',
+    url: 'https://kerjakarsa-ebon.vercel.app',
+    siteName: 'KerjaKarsa',
     images: [
       {
-        url: 'https://kerjakarsa.vercel.app/icon.png', // Harus URL absolut/lengkap agar dibaca WhatsApp
+        url: 'https://kerjakarsa-ebon.vercel.app/logo-icon.svg',
         width: 1200,
         height: 630,
-        alt: 'Kerjakarsa App Logo',
+        alt: 'KerjaKarsa Logo',
       },
     ],
     locale: 'id_ID',
@@ -28,15 +30,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kerjakarsa - Kolaborasi dan Ekosistem Kreatif Digital',
-    description: 'Platform digital terintegrasi untuk memberdayakan pekerja kreatif dan menggerakkan ekonomi digital Indonesia',
-    images: ['https://kerjakarsa.vercel.app/icon.png'],
+    title: 'KerjaKarsa - Ekosistem Kolaborasi & Pemberdayaan Pekerja Informal',
+    description: 'Platform digital terintegrasi untuk memberdayakan pekerja informal dan menggerakkan ekonomi digital Indonesia',
+    images: ['https://kerjakarsa-ebon.vercel.app/logo-icon.svg'],
   },
 }
 export const viewport: Viewport = {
   colorScheme: 'light',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0d6b74' },
+    { media: '(prefers-color-scheme: light)', color: '#0f766e' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -51,6 +53,9 @@ export default function RootLayout({
   return (
     <html lang="id" className="bg-stone-50">
       <head>
+        <link rel="icon" href="/logo-icon.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/logo-icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo-icon.svg" />
         <link
           rel="stylesheet"
           href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
