@@ -1,54 +1,72 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2, Circle } from 'lucide-react'
+import { CheckCircle2, Circle, Bell } from 'lucide-react'
 
 export function StatusWorkToggle() {
   const [isActive, setIsActive] = useState(true)
+  const [showToast, setShowToast] = useState(false)
+
+  const handleToggle = () => {
+    const nextState = !isActive
+    setIsActive(nextState)
+    setShowToast(true)
+    setTimeout(() => setShowToast(false), 2500)
+  }
 
   return (
-    <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 mb-6">
+    <div className="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 mb-6 relative overflow-hidden">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-xl font-bold text-stone-900">Status Kerja</h2>
+          <h2 className="text-xl font-bold text-stone-900">Status Kerja Mitra</h2>
           <p className="text-sm text-stone-600">
-            {isActive ? 'Anda siap menerima pesanan' : 'Anda sedang istirahat'}
+            {isActive ? 'Anda dalam mode Siap Menerima Pesanan Jasa Baru' : 'Anda sedang dalam mode Istirahat (Off)'}
           </p>
         </div>
 
         {/* Large Toggle Switch */}
         <button
-          onClick={() => setIsActive(!isActive)}
-          className={`relative inline-flex h-16 w-28 items-center rounded-full transition-all ${
+          onClick={handleToggle}
+          className={`relative inline-flex h-12 w-24 items-center rounded-full p-1 transition-colors duration-300 ${
             isActive ? 'bg-amber-500' : 'bg-stone-300'
           }`}
-          aria-label="Toggle work status"
+          aria-label="Toggle status kerja"
         >
           <span
-            className={`inline-block h-14 w-14 transform rounded-full bg-white shadow-lg transition-transform flex items-center justify-center ${
-              isActive ? 'translate-x-1' : '-translate-x-1'
+            className={`inline-block h-10 w-10 transform rounded-full bg-white shadow-md transition-transform duration-300 flex items-center justify-center ${
+              isActive ? 'translate-x-12' : 'translate-x-0'
             }`}
           >
             {isActive ? (
-              <CheckCircle2 className="w-8 h-8 text-amber-500" />
+              <CheckCircle2 className="w-6 h-6 text-amber-500" />
             ) : (
-              <Circle className="w-8 h-8 text-stone-400" />
+              <Circle className="w-6 h-6 text-stone-400" />
             )}
           </span>
         </button>
       </div>
 
-      {/* Status Indicator */}
-      <div className="mt-4 flex items-center gap-2 text-sm font-medium">
-        <div
-          className={`w-3 h-3 rounded-full ${
-            isActive ? 'bg-amber-500' : 'bg-stone-400'
-          }`}
-        />
-        <span className={isActive ? 'text-amber-600' : 'text-stone-600'}>
-          {isActive ? 'Aktif • Siap Kerja' : 'Istirahat'}
-        </span>
+      {/* Status Indicator & Toast */}
+      <div className="mt-4 flex items-center justify-between text-sm font-medium pt-3 border-t border-stone-100">
+        <div className="flex items-center gap-2">
+          <div
+            className={`w-3 h-3 rounded-full ${
+              isActive ? 'bg-amber-500 animate-pulse' : 'bg-stone-400'
+            }`}
+          />
+          <span className={isActive ? 'text-amber-700 font-bold' : 'text-stone-600'}>
+            {isActive ? 'Aktif • Siap Kerja' : 'Istirahat • Tidak Menerima Pesanan'}
+          </span>
+        </div>
+
+        {showToast && (
+          <div className="flex items-center gap-1.5 text-xs text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-200 animate-in fade-in duration-200">
+            <Bell className="w-3.5 h-3.5" />
+            <span>Status berhasil diperbarui!</span>
+          </div>
+        )}
       </div>
     </div>
   )
 }
+

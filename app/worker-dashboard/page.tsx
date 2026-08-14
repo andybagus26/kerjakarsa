@@ -1,3 +1,5 @@
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { Navbar } from '@/components/navbar'
 import { WorkerSidebar } from '@/components/worker-sidebar'
 import { WorkerBottomNav } from '@/components/worker-bottom-nav'
@@ -23,6 +25,31 @@ export default function WorkerDashboard() {
 
       {/* Main Content */}
       <div className="px-4 md:px-8 py-6 md:py-8 max-w-7xl">
+        {/* Role Identity Banner */}
+        <div className="mb-6 bg-gradient-to-r from-teal-50 to-teal-100/60 border border-teal-200/80 p-5 rounded-3xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-teal-700 rounded-2xl flex items-center justify-center text-white font-bold shadow-sm">
+              🧰
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="font-bold text-stone-900 text-base">Dashboard Mitra Pekerja (Worker)</h2>
+                <span className="bg-teal-200 text-teal-900 text-xs font-extrabold px-2.5 py-0.5 rounded-full">WORKER</span>
+              </div>
+              <p className="text-xs text-stone-600 mt-0.5">
+                Fokus Fitur Pekerja: <strong>Toggle Siap Kerja</strong>, <strong>AI Predictive Heatmap</strong>, <strong>Voice Profile</strong>, &amp; <strong>Ringkasan Pendapatan</strong>.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-600 text-stone-900 rounded-2xl text-xs font-bold transition-all shadow-sm flex-shrink-0"
+          >
+            <span>Tukar ke Mode Klien</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-stone-900">

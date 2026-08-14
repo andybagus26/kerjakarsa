@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { 
   Search, Sliders, X, MapPin, Star, ShieldCheck, 
   Wallet, Calendar, Clock, ChevronLeft, CheckCircle2,
@@ -415,12 +416,24 @@ export default function SearchPage() {
                     <CheckCircle2 className="w-10 h-10 text-teal-700" />
                   </div>
                   <h3 className="text-2xl font-bold text-stone-900 mb-2">Pembayaran Diterima!</h3>
-                  <p className="text-stone-600 text-sm mb-8">
+                  <p className="text-stone-600 text-sm mb-6">
                     Dana Anda diamankan dalam sistem <strong>Escrow</strong>. Menunggu <strong>{selectedWorker.name}</strong> untuk tiba di lokasi.
                   </p>
-                  <button onClick={closeModal} className="w-full py-3.5 bg-stone-900 text-white rounded-2xl font-bold hover:bg-stone-800 transition-colors">
-                    Kembali ke Pencarian
-                  </button>
+                  
+                  <div className="w-full space-y-3">
+                    <Link
+                      href="/dashboard"
+                      className="w-full py-3.5 bg-teal-700 text-white rounded-2xl font-bold hover:bg-teal-800 transition-colors shadow-md flex items-center justify-center gap-2"
+                    >
+                      Lihat Pesanan di Dashboard
+                    </Link>
+                    <button
+                      onClick={closeModal}
+                      className="w-full py-3 bg-stone-100 text-stone-700 rounded-2xl font-semibold hover:bg-stone-200 transition-colors"
+                    >
+                      Cari Jasa Lain
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
