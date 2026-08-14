@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { 
   Search, Sliders, X, MapPin, Star, ShieldCheck, 
@@ -39,8 +40,8 @@ const mockWorkers: Worker[] = [
     estimatedWage: 'Rp 250.000',
     specialty: 'Tukang Bangunan Berpengalaman',
     location: 'Surabaya Barat',
-    about: 'Berpengalaman lebih dari 10 tahun dalam konstruksi rumah tinggal dan renovasi gedung komersial. Mengerjakan dengan rapi, presisi, dan tepat waktu.',
-    skills: ['Pemasangan Bata', 'Keramik', 'Pengecatan', 'Baja Ringan']
+    about: 'Berpengalaman lebih dari 10 tahun dalam konstruksi rumah tinggal, perbaikan tembok, lantai, dan renovasi gedung komersial.',
+    skills: ['Pemasangan Bata', 'Keramik', 'Pengecatan', 'Baja Ringan', 'Tukang Bangunan']
   },
   {
     id: '2',
@@ -54,7 +55,7 @@ const mockWorkers: Worker[] = [
     specialty: 'Pembersih Profesional & Perawatan',
     location: 'Gresik Kota',
     about: 'Menyediakan jasa deep cleaning untuk rumah, apartemen, dan kantor. Menggunakan bahan pembersih ramah lingkungan dan alat modern.',
-    skills: ['Deep Cleaning', 'Sanitasi', 'Setrika', 'Organisasi Ruangan']
+    skills: ['Deep Cleaning', 'Sanitasi', 'Setrika', 'Organisasi Ruangan', 'Pembersihan']
   },
   {
     id: '3',
@@ -68,7 +69,21 @@ const mockWorkers: Worker[] = [
     specialty: 'Teknisi Listrik Terlisensi',
     location: 'Surabaya Timur',
     about: 'Teknisi listrik tersertifikasi. Mampu menangani instalasi baru, perbaikan korsleting, hingga perakitan panel listrik pintar untuk smart home.',
-    skills: ['Instalasi Kabel', 'Troubleshooting', 'Panel Listrik', 'Smart Home']
+    skills: ['Instalasi Kabel', 'Troubleshooting', 'Panel Listrik', 'Smart Home', 'Listrik']
+  },
+  {
+    id: '4',
+    name: 'Rudi Hermawan',
+    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&fit=crop',
+    distance: '4.1 km dari lokasi Anda',
+    rating: 4.9,
+    reviews: 94,
+    verified: true,
+    estimatedWage: 'Rp 275.000',
+    specialty: 'Teknisi Servis AC & Kulkas',
+    location: 'Surabaya Selatan',
+    about: 'Spesialis cuci AC, isi freon, perbaikan kompresor kulkas, dan instalasi AC split/cassette garansi dingin.',
+    skills: ['Servis AC', 'Cuci AC', 'Isi Freon', 'Perbaikan Kulkas', 'Pendingin']
   }
 ]
 
@@ -76,8 +91,10 @@ const mockWorkers: Worker[] = [
 type ModalView = 'detail' | 'checkout' | 'payment' | 'success' | 'closed';
 type PaymentMethod = 'qris' | 'va-bca' | 'va-mandiri';
 
-export default function SearchPage() {
-  const [searchQuery, setSearchQuery] = useState('Tukang Bangunan')
+function SearchPageContent() {
+  const searchParams = useSearchParams()
+  const urlQuery = searchParams.get('q') || searchParams.get('query') || ''
+  const [searchQuery, setSearchQuery] = useState(urlQuery || 'Tukang Bangunan')
   const [showMobileFilter, setShowMobileFilter] = useState(false)
   const [filters, setFilters] = useState<FilterState>({
     radius: 10,
@@ -85,6 +102,12 @@ export default function SearchPage() {
     maxPrice: 500000,
     activeNow: false,
   })
+
+  useEffect(() => {
+    if (urlQuery) {
+      setSearchQuery(urlQuery)
+    }
+  }, [urlQuery])
 
   // State Modal & Pemesanan
   const [selectedWorker, setSelectedWorker] = useState<Worker | null>(null)
@@ -100,13 +123,11 @@ export default function SearchPage() {
   }
 
   const proceedToPayment = () => {
-    // Generate dummy order ID layaknya sistem produksi
     setOrderId(`KRJ-${Math.floor(Math.random() * 90000) + 10000}`)
     setModalView('payment')
   }
 
   const handleCopyVA = () => {
-    // Simulasi copy clipboard
     alert('Nomor Virtual Account disalin!')
   }
 
@@ -114,9 +135,22 @@ export default function SearchPage() {
     setModalView('closed')
     setTimeout(() => {
       setSelectedWorker(null)
-      setPaymentMethod('qris') // Reset
+      setPaymentMethod('qris')
     }, 300)
   }
+
+  // Filter pekerja secara dinamis berdasarkan kata kunci pencarian
+  const filteredWorkers = mockWorkers.filter((worker) => {
+    if (!searchQuery.trim()) return true
+    const q = searchQuery.toLowerCase().trim()
+    return (
+      worker.name.toLowerCase().includes(q) ||
+      worker.specialty.toLowerCase().includes(q) ||
+      worker.about.toLowerCase().includes(q) ||
+      worker.location.toLowerCase().includes(q) ||
+      worker.skills.some((skill) => skill.toLowerCase().includes(q))
+    )
+  })
 
   return (
     <main className="bg-stone-50 min-h-screen relative">
@@ -158,49 +192,93 @@ export default function SearchPage() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari jasa atau tukang..."
+                placeholder="Cari jasa atau tukang (misal: Servis AC, Listrik, Bangunan)..."
                 className="w-full pl-12 pr-6 py-3 border border-stone-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-teal-700"
               />
             </div>
           </div>
 
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-bold text-stone-900">Hasil untuk &quot;{searchQuery}&quot;</h2>
-            <p className="text-sm text-stone-600">{mockWorkers.length} pekerja tersedia</p>
+            <h2 className="text-lg font-bold text-stone-900">
+              {searchQuery ? (
+                <>Hasil untuk &quot;{searchQuery}&quot;</>
+              ) : (
+                <>Semua Mitra Pekerja</>
+              )}
+            </h2>
+            <p className="text-sm text-stone-600">{filteredWorkers.length} pekerja tersedia</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mockWorkers.map((worker) => (
-              <div 
-                key={worker.id} 
-                onClick={() => openWorkerDetail(worker)}
-                className="cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+          {filteredWorkers.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredWorkers.map((worker) => (
+                <div 
+                  key={worker.id} 
+                  onClick={() => openWorkerDetail(worker)}
+                  className="cursor-pointer transition-transform hover:scale-[1.02] active:scale-95"
+                >
+                  <WorkerCard {...worker} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-white rounded-3xl border border-stone-200 p-12 text-center my-6 shadow-2xs">
+              <Search className="w-12 h-12 text-stone-300 mx-auto mb-3" />
+              <h3 className="font-bold text-stone-900 text-lg mb-1">
+                Tidak Ada Pekerja Ditemukan
+              </h3>
+              <p className="text-sm text-stone-500 max-w-sm mx-auto mb-4 leading-relaxed">
+                Tidak ada pekerja yang cocok dengan kata kunci &quot;<strong>{searchQuery}</strong>&quot;. Coba cari kata kunci lain seperti <strong>&quot;Servis AC&quot;</strong>, <strong>&quot;Listrik&quot;</strong>, atau <strong>&quot;Tukang Bangunan&quot;</strong>.
+              </p>
+              <button
+                onClick={() => setSearchQuery('')}
+                className="px-5 py-2.5 bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold rounded-xl transition-colors shadow-xs"
               >
-                <WorkerCard {...worker} />
-              </div>
-            ))}
-          </div>
+                Tampilkan Semua Pekerja
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
       {/* --- MOBILE LAYOUT --- */}
       <div className="md:hidden p-4 pb-12">
         <div className="mb-6">
-          <h2 className="text-lg font-bold text-stone-900 mb-1">Hasil untuk &quot;{searchQuery}&quot;</h2>
-          <p className="text-sm text-stone-600">{mockWorkers.length} pekerja tersedia</p>
+          <h2 className="text-lg font-bold text-stone-900 mb-1">
+            {searchQuery ? <>Hasil untuk &quot;{searchQuery}&quot;</> : <>Semua Mitra Pekerja</>}
+          </h2>
+          <p className="text-sm text-stone-600">{filteredWorkers.length} pekerja tersedia</p>
         </div>
 
-        <div className="space-y-4">
-          {mockWorkers.map((worker) => (
-            <div 
-              key={worker.id} 
-              onClick={() => openWorkerDetail(worker)}
-              className="cursor-pointer active:scale-95 transition-transform"
+        {filteredWorkers.length > 0 ? (
+          <div className="space-y-4">
+            {filteredWorkers.map((worker) => (
+              <div 
+                key={worker.id} 
+                onClick={() => openWorkerDetail(worker)}
+                className="cursor-pointer active:scale-95 transition-transform"
+              >
+                <WorkerCard {...worker} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl border border-stone-200 p-8 text-center my-4">
+            <Search className="w-10 h-10 text-stone-300 mx-auto mb-2" />
+            <h3 className="font-bold text-stone-900 text-base mb-1">
+              Tidak Ditemukan
+            </h3>
+            <p className="text-xs text-stone-500 mb-4">
+              Tidak ada hasil untuk &quot;{searchQuery}&quot;.
+            </p>
+            <button
+              onClick={() => setSearchQuery('')}
+              className="px-4 py-2 bg-teal-700 text-white text-xs font-bold rounded-xl"
             >
-              <WorkerCard {...worker} />
-            </div>
-          ))}
-        </div>
+              Lihat Semua
+            </button>
+          </div>
+        )}
       </div>
 
       <MobileFilterModal
@@ -463,5 +541,13 @@ export default function SearchPage() {
         </div>
       )}
     </main>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense fallback={<div className="bg-stone-50 min-h-screen p-8 text-center text-stone-500">Memuat pencarian...</div>}>
+      <SearchPageContent />
+    </Suspense>
   )
 }

@@ -1,9 +1,23 @@
 'use client'
 
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { Mic, Star, Wallet } from 'lucide-react'
 
 export function HeroSection() {
+  const router = useRouter()
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSearch = (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`)
+    } else {
+      router.push('/search')
+    }
+  }
+
   return (
     <section className="pt-6 md:pt-24 pb-12 md:pb-24 bg-stone-50">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -19,24 +33,30 @@ export function HeroSection() {
           </div>
 
           {/* Mobile Voice Search */}
-          <div className="space-y-3">
+          <form onSubmit={handleSearch} className="space-y-3">
             <div className="relative">
               <input
                 type="text"
-                placeholder="Cari jasa atau tukang..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Cari jasa atau tukang (misal: Servis AC)..."
                 className="w-full px-4 py-3 rounded-2xl border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base"
               />
               <button
+                type="button"
                 className="absolute right-3 top-1/2 -translate-y-1/2 p-2 hover:bg-amber-100 rounded-lg transition-colors"
                 aria-label="Voice search"
               >
                 <Mic className="w-5 h-5 text-amber-500" />
               </button>
             </div>
-            <button className="w-full px-4 py-3 bg-amber-500 text-white font-semibold rounded-2xl hover:bg-amber-600 transition-colors shadow-sm">
+            <button
+              type="submit"
+              className="w-full px-4 py-3 bg-amber-500 text-white font-semibold rounded-2xl hover:bg-amber-600 transition-colors shadow-sm"
+            >
               Mulai Cari
             </button>
-          </div>
+          </form>
         </div>
 
         {/* Desktop: Split Layout 60/40 */}
@@ -53,24 +73,30 @@ export function HeroSection() {
             </div>
 
             {/* Desktop Voice Search */}
-            <div className="flex gap-3 pt-2">
+            <form onSubmit={handleSearch} className="flex gap-3 pt-2">
               <div className="flex-1 relative">
                 <input
                   type="text"
-                  placeholder="Cari jasa atau tukang..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Cari jasa atau tukang (misal: Servis AC)..."
                   className="w-full px-6 py-4 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base shadow-sm"
                 />
                 <button
+                  type="button"
                   className="absolute right-4 top-1/2 -translate-y-1/2 p-2 hover:bg-amber-100 rounded-lg transition-colors"
                   aria-label="Voice search"
                 >
                   <Mic className="w-6 h-6 text-amber-500" />
                 </button>
               </div>
-              <button className="px-8 py-4 bg-amber-500 text-white font-semibold rounded-full hover:bg-amber-600 transition-colors shadow-sm whitespace-nowrap">
+              <button
+                type="submit"
+                className="px-8 py-4 bg-amber-500 text-white font-semibold rounded-full hover:bg-amber-600 transition-colors shadow-sm whitespace-nowrap"
+              >
                 Mulai Cari
               </button>
-            </div>
+            </form>
           </div>
 
           {/* Right Visual - 40% Bento Cards */}

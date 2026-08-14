@@ -10,10 +10,9 @@ export default function Page() {
     <main className="bg-stone-50 min-h-screen">
       <PwaBanner />
       <Navbar />
-      <Link href="/search">
-        <HeroSection />
-      </Link>
+      <HeroSection />
       <Categories />
+
       <SocialProofTicker />
 
       {/* Footer */}
