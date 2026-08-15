@@ -17,7 +17,7 @@ export function DashboardSidebar() {
   return (
     <aside className="hidden md:flex w-64 bg-white rounded-2xl border border-stone-200/80 shadow-xs flex-col h-[calc(100vh-100px)] sticky top-24 ml-6 shrink-0">
       <div className="p-4 border-b border-stone-100 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 font-bold text-xs">
+        <div className="px-2.5 py-1 rounded-lg bg-teal-100 text-teal-800 font-extrabold text-xs tracking-wide">
           KLIEN
         </div>
         <div>
