@@ -99,8 +99,8 @@ export function HeroSection() {
             </form>
           </div>
 
-          {/* Right Visual - 3D Character Illustration with Informal Job Overlays */}
-          <div className="relative w-full max-w-md md:max-w-lg aspect-[976/1024] mx-auto rounded-3xl overflow-hidden shadow-xl border border-stone-200/80 bg-white">
+          {/* Right Visual - AI Generated 3D Character Illustration */}
+          <div className="relative w-full max-w-md md:max-w-lg aspect-square mx-auto rounded-3xl overflow-hidden drop-shadow-xl">
             <Image
               src="/gambarlanding.png"
               alt="Ilustrasi Layanan KerjaKarsa"
@@ -108,54 +108,6 @@ export function HeroSection() {
               className="object-contain"
               priority
             />
-
-            {/* Overlay 1: Top-Left Card (Replaces UI/UX Designer -> Teknisi Servis AC) */}
-            <div className="absolute top-[20%] left-[23%] bg-white rounded-2xl px-3 py-2 shadow-lg border border-stone-200/90 flex items-center gap-2.5 z-20 min-w-[155px]">
-              <div className="w-8 h-8 rounded-xl bg-teal-700 text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0">
-                AC
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-xs font-extrabold text-stone-900 leading-tight truncate">Teknisi Servis AC</h4>
-                <div className="flex items-center gap-0.5 mt-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={11} className="fill-amber-500 text-amber-500" />
-                  ))}
-                  <span className="text-[10px] font-bold text-stone-700 ml-1">5.0</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Overlay 2: Bottom-Left Card (Replaces Web Developer -> Tukang Bangunan) */}
-            <div className="absolute top-[38.5%] left-[17%] bg-white rounded-2xl px-3 py-2 shadow-lg border border-stone-200/90 flex items-center gap-2.5 z-20 min-w-[155px]">
-              <div className="w-8 h-8 rounded-xl bg-amber-500 text-stone-900 font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0">
-                TB
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-xs font-extrabold text-stone-900 leading-tight truncate">Tukang Bangunan</h4>
-                <div className="flex items-center gap-0.5 mt-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={11} className="fill-amber-500 text-amber-500" />
-                  ))}
-                  <span className="text-[10px] font-bold text-stone-700 ml-1">4.9</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Overlay 3: Right Card (Replaces Content Writer -> Perbaikan Listrik) */}
-            <div className="absolute top-[46.5%] right-[3.5%] bg-white rounded-2xl px-3 py-2 shadow-lg border border-stone-200/90 flex items-center gap-2.5 z-20 min-w-[150px]">
-              <div className="w-8 h-8 rounded-xl bg-teal-600 text-white font-extrabold text-xs flex items-center justify-center shadow-xs shrink-0">
-                PL
-              </div>
-              <div className="min-w-0">
-                <h4 className="text-xs font-extrabold text-stone-900 leading-tight truncate">Perbaikan Listrik</h4>
-                <div className="flex items-center gap-0.5 mt-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={11} className="fill-amber-500 text-amber-500" />
-                  ))}
-                  <span className="text-[10px] font-bold text-stone-700 ml-1">5.0</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
