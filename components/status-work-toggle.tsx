@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { CheckCircle2, Circle, Bell } from 'lucide-react'
+import { Check, Bell } from 'lucide-react'
 
 export function StatusWorkToggle() {
   const [isActive, setIsActive] = useState(true)
@@ -24,24 +24,20 @@ export function StatusWorkToggle() {
           </p>
         </div>
 
-        {/* Large Toggle Switch */}
+        {/* Clean Toggle Switch */}
         <button
           onClick={handleToggle}
-          className={`relative inline-flex h-9 w-16 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-300 ease-in-out focus:outline-none ${
+          className={`relative inline-flex h-9 w-16 shrink-0 cursor-pointer items-center rounded-full p-1 transition-colors duration-300 ease-in-out focus:outline-none ${
             isActive ? 'bg-amber-500' : 'bg-stone-300'
           }`}
           aria-label="Toggle status kerja"
         >
           <span
-            className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md ring-0 transition duration-300 ease-in-out flex items-center justify-center ${
-              isActive ? 'translate-x-7' : 'translate-x-0.5'
+            className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out flex items-center justify-center ${
+              isActive ? 'translate-x-7' : 'translate-x-0'
             }`}
           >
-            {isActive ? (
-              <CheckCircle2 className="w-5 h-5 text-amber-500" />
-            ) : (
-              <Circle className="w-5 h-5 text-stone-400" />
-            )}
+            {isActive && <Check className="w-4 h-4 text-amber-600 stroke-[3]" />}
           </span>
         </button>
       </div>
