@@ -123,15 +123,57 @@ export function HeroSection() {
               <p className="text-xs text-stone-600">Upah harian rata-rata</p>
             </div>
 
-            {/* Center Decorative Circle (Diperbarui dengan Next/Image) */}
+            {/* Center Professional UI Canvas */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-100 h-100 relative rounded-3xl shadow-lg overflow-hidden border border-stone-200 bg-white">
-                <Image
-                  src="/gambarlanding.png" /* <-- Jangan lupa ubah ini sesuai nama file gambarmu di folder public */
-                  alt="Ilustrasi Jasa"
-                  fill
-                  className="object-cover"
-                />
+              <div className="w-full h-full relative rounded-3xl shadow-xl overflow-hidden border border-stone-200/80 bg-linear-to-br from-teal-900 via-teal-800 to-stone-900 p-6 flex flex-col justify-between">
+                {/* Subtle Background Pattern */}
+                <div className="absolute inset-0 bg-[radial-gradient(#5eead4_1px,transparent_1px)] [background-size:16px_16px] opacity-15"></div>
+                
+                {/* Header Card Badges */}
+                <div className="relative z-10 flex items-center justify-between">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>1,420 Pekerja Online Hari Ini</span>
+                  </div>
+                  <div className="px-3 py-1.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-semibold">
+                    AI Verified Profile
+                  </div>
+                </div>
+
+                {/* Main Featured Worker Profile Banner */}
+                <div className="relative z-10 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-stone-100 flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-linear-to-tr from-teal-600 to-teal-800 flex items-center justify-center text-white font-extrabold text-xl shadow-md border-2 border-white shrink-0">
+                    BS
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h4 className="font-bold text-stone-900 truncate">Budi Santoso</h4>
+                      <span className="px-2 py-0.5 rounded bg-teal-100 text-teal-800 text-[10px] font-bold">TERVERIFIKASI</span>
+                    </div>
+                    <p className="text-xs text-stone-500 font-medium">Spesialis Listrik & Instalasi AC</p>
+                    <div className="flex items-center gap-3 mt-1.5 text-[11px] text-stone-600">
+                      <span className="flex items-center gap-1 font-semibold text-amber-600">
+                        <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" /> 4.98 (128 ulasan)
+                      </span>
+                      <span>•</span>
+                      <span>Jakarta Selatan</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Stats Grid */}
+                <div className="relative z-10 grid grid-cols-2 gap-3">
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-white">
+                    <p className="text-[10px] text-teal-200 font-medium">Sistem Pembayaran</p>
+                    <p className="text-xs font-bold text-white flex items-center gap-1.5 mt-0.5">
+                      <span className="w-2 h-2 rounded-full bg-teal-400"></span> Escrow Garansi 100%
+                    </p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-md rounded-xl p-3 border border-white/10 text-white">
+                    <p className="text-[10px] text-amber-200 font-medium">Estimasi Tiba</p>
+                    <p className="text-xs font-bold text-amber-300 mt-0.5">⚡ ~15 Menit di Lokasi</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
