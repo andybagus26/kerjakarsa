@@ -8,89 +8,92 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript)
 ![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Leaflet.js](https://img.shields.io/badge/Leaflet.js-OpenStreetMap-199900?style=for-the-badge&logo=leaflet)
-![Web Speech API](https://img.shields.io/badge/Web_Speech_API-Native_AI-FF6F00?style=for-the-badge)
+![Web Speech API](https://img.shields.io/badge/Web_Speech_API-Native_Browser_AI-FF6F00?style=for-the-badge)
 
 ---
 
 ## 📌 Latar Belakang & Permasalahan
 
 Sektor pekerja informal di Indonesia (seperti tukang perbaikan rumah, teknisi AC, pekerja kebersihan, dan penyedia jasa harian) mencakup puluhan juta tenaga kerja. Namun, mereka menghadapi dua kendala utama:
-1. **Kesulitan Pemasaran & Profil Tertulis**: Pekerja sering kesulitan membuat CV atau profil jasa yang menarik dalam bentuk teks tertulis.
-2. **Keamanan Transaksi & Kepastian Lokasi**: Pencari jasa sering merasa ragu akibat maraknya penipuan uang muka (DP) dan tidak adanya sistem pelacakan lokasi waktu tiba pekerja secara *real-time*.
+1. **Kesulitan Pemasaran & Profil Tertulis**: Pekerja sering kesulitan menyusun deskripsi keahlian atau CV tertulis.
+2. **Keamanan Transaksi & Kepastian Lokasi**: Pencari jasa sering ragu akibat maraknya penipuan uang muka (DP) dan ketiadaan pelacakan lokasi waktu tiba pekerja secara *real-time*.
 
-**KerjaKarsa** hadir sebagai solusi terintegrasi yang memberdayakan pekerja informal sekaligus memberikan kepastian transaksi bagi pencari jasa.
+**KerjaKarsa** hadir sebagai solusi web terintegrasi yang memberdayakan pekerja informal melalui teknologi *voice-to-text*, pelacakan lokasi berbasis peta interaktif, serta garansi transaksi Escrow.
 
 ---
 
-## 🌟 Fitur-Fitur Unggulan KerjaKarsa
+## 🌟 Fitur-Fitur Utama & Implementasi Teknis
 
-### 1. 🛡️ Safe Escrow Wallet (Sistem Rekening Bersama)
-- **Keamanan Transaksi**: Dana pencari jasa ditahan secara aman di sistem Escrow (simulasi pembayaran Midtrans).
-- **Pencairan Transparan**: Dana baru dilepaskan ke dompet mitra pekerja setelah pencari jasa mengonfirmasi bahwa pekerjaan telah selesai.
-- **Resi Transaksi Resmi**: Mengeluarkan resi bukti pencairan dana interaktif beserta ID Transaksi unik.
+### 1. 🛡️ Safe Escrow Wallet (Sistem Rekening Bersama & Simulasi Gateway)
+- **Keamanan Transaksi**: Dana pencari jasa ditahan secara aman pada sistem Escrow sebelum pekerjaan selesai.
+- **Simulasi Pembayaran Midtrans Snap**: Alur checkout interaktif dengan simulasi metode pembayaran bank & e-wallet.
+- **Pencairan Transparan & Resi Resmi**: Dana baru dilepaskan ke dompet mitra pekerja setelah pencari jasa mengonfirmasi penyelesaian tugas, lengkap dengan resi bukti pencairan dan ID Transaksi unik.
 
 ### 2. 🗺️ Leaflet.js Interactive Live GPS Tracking
 - **Peta Real-Time (OpenStreetMap)**: Memantau pergerakan posisi pekerja yang sedang dalam perjalanan menuju lokasi pelanggan.
-- **Marker & Route Polyline**: Menampilkan marker interaktif lokasi pekerja (efek *pulsing GPS*), posisi rumah pelanggan, serta garis rute perjalanan.
-- **Auto-Resize & Full-Bleed Tile**: Peta otomatis menyesuaikan ukuran layar tanpa *blank space*.
+- **Marker & Route Polyline**: Menampilkan marker lokasi pekerja (efek *pulsing GPS*), posisi rumah pelanggan, serta rute perjalanan dinamis.
+- **Auto-Resize & Full-Bleed Tile**: Layar peta responsif tanpa *blank space*.
 
-### 3. 🎙️ Web Speech API Voice Profile Generator (AI Powered)
-- **Input Suara Inklusif (`id-ID`)**: Pekerja yang kesulitan mengetik cukup berbicara menggunakan Bahasa Indonesia melalui mikrofon browser native (`webkitSpeechRecognition`).
-- **Live Streaming Transcript**: Ucapan pekerja dikonversi menjadi teks secara *real-time*.
-- **Ekstraksi AI Otomatis**: Menyusun deskripsi bio profesional dan mengekstrak *Tag Keahlian* (`❄️ Servis AC`, `⚡ Listrik`, `🔧 Elektronik`, `📍 Surabaya`).
-- **Mode Demo Instan**: Menyediakan tombol simulasi sampel suara tanpa memerlukan izin mikrofon fisik.
+### 3. 🎙️ Web Speech API Voice Profile Generator (Natural Voice AI)
+- **Input Suara Inklusif (`id-ID`)**: Memanfaatkan browser native `webkitSpeechRecognition` / `SpeechRecognition` untuk mengonversi ucapan Bahasa Indonesia pekerja menjadi teks secara *real-time*.
+- **Ekstraksi Tag Keahlian**: Mengurai kata kunci dari ucapan pekerja untuk menyusun bio profesional dan tag keahlian (`❄️ Servis AC`, `⚡ Listrik`, `🔧 Perbaikan`, `📍 Surabaya`).
+- **Mode Demo Voice Simulation**: Menyediakan fallback sampel suara bawaan untuk pengujian instan tanpa mikrofon fisik.
 
 ### 4. 📊 AI Predictive Demand Heatmap
-- **Prediksi Kepadatan Pesanan**: Mem visualisasikan lingkaran zona ramai pesanan (*Circle Overlays*) di area Surabaya.
-- **Informasi Interaktif**: Menyajikan detail jumlah pesanan aktif dan potensi peluang kerja di setiap wilayah.
+- **Visualisasi Geospasial Kepadatan Pesanan**: Memvisualisasikan lingkaran zona ramai pesanan (*Circle Overlays*) pada wilayah Surabaya & sekitarnya menggunakan Leaflet.js overlays.
+- **Analisis Potensi Peluang**: Menyajikan data tren pesanan aktif untuk membantu pekerja menentukan lokasi mangkal strategis.
 
-### 5. 📋 Dynamic Task Checklist
-- **Manajemen Progres Proyek**: Pelanggan & pekerja dapat menambah, mencentang, dan menghapus daftar tugas pengerjaan secara *real-time*.
-- **Visual Progress Bar**: Persentase kemajuan pengerjaan bergerak secara dinamis seiring tugas diselesaikan.
+### 5. 📋 Dynamic Task Checklist & Progress Tracking
+- **Manajemen Progres Proyek**: Pelanggan & pekerja dapat mengelola daftar tugas pengerjaan secara interaktif.
+- **Visual Progress Bar**: Persentase kemajuan pengerjaan bergerak secara dinamis sesuai penyelesaian item tugas.
 
-### 6. 🔄 Dynamic Role Switcher & Auth Modal
-- **Navigasi 2-Sisi**: Berpindah secara instan antara tampilan **Dashboard Pencari Jasa (Klien)** dan **Dashboard Mitra Pekerja (Worker)**.
-- **Modal Login Demo**: Akses langsung dengan preset akun demo pelanggan & mitra.
-
----
-
-## 🛠️ Teknologi & Arsitektur Sistem
-
-- **Framework Utama**: Next.js 16.3 (App Router)
-- **Library UI**: React 19, Lucide React Icons, Shadcn UI
-- **Styling**: Tailwind CSS v4, Vanilla CSS Design System
-- **Pemetaan Interaktif**: Leaflet.js & OpenStreetMap
-- **Pemrosesan Suara**: Browser Native Web Speech API (`SpeechRecognition` / `webkitSpeechRecognition`)
-- **Package Manager**: `pnpm`
+### 6. 🔄 Dual-Role Interface (Klien & Mitra Pekerja)
+- **Navigasi 2-Sisi**: Perpindahan cepat antara **Dashboard Pencari Jasa (Klien)** dan **Dashboard Mitra Pekerja (Worker)**.
+- **Navigasi Lengkap**: Rute pesanan masuk (`/worker-orders`), pencarian jasa (`/search`), dan manajemen status kerja mitra.
 
 ---
 
-## 💻 Panduan Jalankan Proyek secara Lokal
+## 🔍 Matriks Teknologi & Arsitektur Sistem
+
+| Komponen Sistem | Teknologi yang Digunakan | Catatan Implementasi |
+| :--- | :--- | :--- |
+| **Frontend Framework** | Next.js 16.3 (App Router), React 19 | Performa tinggi, Server & Client Components |
+| **Styling & UI** | Tailwind CSS v4, Lucide React Icons | Responsive design, modern SaaS aesthetic |
+| **Mapping & GIS** | Leaflet.js, React-Leaflet, OpenStreetMap | Visualisasi peta live tracking & demand heatmap |
+| **Voice Processing** | Web Speech API (`id-ID`) | Pemrosesan suara native peramban tanpa dependensi luar |
+| **State & Data Management** | React Client State (`useState`, `useEffect`) | Arsitektur prototype mandiri yang cepat untuk pengujian demo |
+| **Payment Gateway UI** | Custom Midtrans Snap Modal Simulation | Simulasi alur pembayaran Escrow lengkap dengan resi |
+
+---
+
+## 💻 Panduan Menjalankan Proyek secara Lokal
 
 ### 1. Prasyarat
-Pastikan komputer Anda telah terinstal **Node.js (v18+)** dan **pnpm**.
+- **Node.js**: versi 18.x atau lebih baru
+- **Package Manager**: `npm` / `pnpm` / `yarn`
 
-### 2. Kloning / Buka Direktori Proyek
+### 2. Kloning & Masuk ke Direktori Proyek
 ```bash
-cd /Users/wandaaaaln/Gemastik/kerjakarsa
+git clone https://github.com/andybagus26/kerjakarsa.git
+cd kerjakarsa
 ```
 
 ### 3. Instalasi Dependensi
 ```bash
-pnpm install
+npm install
 ```
 
 ### 4. Jalankan Development Server
 ```bash
-pnpm run dev
+npm run dev
 ```
 
-Buka peramban (browser) dan akses:  
+Akses aplikasi pada peramban web:  
 👉 **`http://localhost:3000`**
 
 ---
 
-## 🗺️ Peta Navigasi Halaman Utama
+## 🗺️ Peta Rute Navigasi Aplikasi
 
 | Halaman | Rute URL | Deskripsi Utama |
 | :--- | :--- | :--- |
@@ -98,13 +101,15 @@ Buka peramban (browser) dan akses:
 | **Cari & Order Jasa** | `/search` | Katalog pekerja, modal detail mitra, form order, & pembayaran Escrow. |
 | **Dashboard Klien** | `/dashboard` | Tracking live GPS Leaflet, Escrow Wallet, dan Task Checklist. |
 | **Dashboard Worker** | `/worker-dashboard` | Toggle Siap Kerja, Voice Profile Generator, & AI Demand Heatmap. |
+| **Pesanan Masuk Worker** | `/worker-orders` | Daftar pesanan aktif & konfirmasi penerimaan pekerjaan. |
 
 ---
 
 ## 👥 Tim Pengembang Gemastik XIX
 
 - **Nama Tim**: Tim KerjaKarsa  
-- **Perguruan Tinggi**: Indonesia  
+- **Kategori**: Software Development (Pengembangan Perangkat Lunak)  
+- **Institusi**: Indonesia  
 
 ---
 *© 2026 KerjaKarsa — Membangun Ekosistem Pekerja Informal Digital Indonesia.*
