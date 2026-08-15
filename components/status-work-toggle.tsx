@@ -24,21 +24,19 @@ export function StatusWorkToggle() {
           </p>
         </div>
 
-        {/* Clean Toggle Switch */}
+        {/* Minimal Modern Toggle Switch */}
         <button
           onClick={handleToggle}
-          className={`relative inline-flex h-9 w-16 shrink-0 cursor-pointer items-center rounded-full p-1 transition-colors duration-300 ease-in-out focus:outline-none ${
+          className={`relative inline-flex h-8 w-14 shrink-0 cursor-pointer items-center rounded-full p-1 transition-colors duration-300 ease-in-out focus:outline-none shadow-inner ${
             isActive ? 'bg-amber-500' : 'bg-stone-300'
           }`}
           aria-label="Toggle status kerja"
         >
           <span
-            className={`pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out flex items-center justify-center ${
-              isActive ? 'translate-x-7' : 'translate-x-0'
+            className={`pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out ${
+              isActive ? 'translate-x-6' : 'translate-x-0'
             }`}
-          >
-            {isActive && <Check className="w-4 h-4 text-amber-600 stroke-[3]" />}
-          </span>
+          />
         </button>
       </div>
 
