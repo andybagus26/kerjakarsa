@@ -157,21 +157,30 @@ function SearchPageContent() {
       <Navbar />
 
       {/* --- MOBILE SEARCH BAR --- */}
-      <div className="md:hidden sticky top-16 z-30 bg-white border-b border-stone-200 p-4">
+      <div className="md:hidden sticky top-16 z-30 bg-white border-b border-stone-200 p-4 shadow-xs">
         <div className="flex gap-2">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-500" />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Cari jasa atau tukang..."
-              className="w-full pl-10 pr-4 py-2.5 border border-stone-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-teal-700 text-sm"
+              className="w-full pl-10 pr-10 py-2.5 border border-stone-300 rounded-full bg-white text-stone-900 placeholder:text-stone-400 font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-teal-700 shadow-2xs"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-stone-700 rounded-full"
+                aria-label="Clear search"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
           <button
             onClick={() => setShowMobileFilter(true)}
-            className="px-3 py-2.5 border border-teal-700 text-teal-700 rounded-full hover:bg-teal-50 transition-colors"
+            className="px-3 py-2.5 border border-teal-700 text-teal-700 rounded-full hover:bg-teal-50 transition-colors shadow-2xs"
           >
             <Sliders className="w-5 h-5" />
           </button>
@@ -187,14 +196,23 @@ function SearchPageContent() {
         <div className="space-y-6">
           <div className="flex items-center gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-stone-500" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari jasa atau tukang (misal: Servis AC, Listrik, Bangunan)..."
-                className="w-full pl-12 pr-6 py-3 border border-stone-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-teal-700"
+                className="w-full pl-12 pr-10 py-3 border border-stone-300 rounded-full bg-white text-stone-900 placeholder:text-stone-400 font-semibold text-base focus:outline-none focus:ring-2 focus:ring-teal-700 shadow-xs"
               />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1.5 text-stone-400 hover:text-stone-700 rounded-full transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )}
             </div>
           </div>
 

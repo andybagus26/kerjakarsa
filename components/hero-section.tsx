@@ -40,7 +40,7 @@ export function HeroSection() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari jasa atau tukang (misal: Servis AC)..."
-                className="w-full px-4 py-3 rounded-2xl border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base"
+                className="w-full px-4 py-3 rounded-2xl border border-stone-300 bg-white text-stone-900 font-semibold placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base shadow-2xs"
               />
               <button
                 type="button"
@@ -80,7 +80,7 @@ export function HeroSection() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari jasa atau tukang (misal: Servis AC)..."
-                  className="w-full px-6 py-4 rounded-full border border-stone-200 bg-white focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base shadow-sm"
+                  className="w-full px-6 py-4 rounded-full border border-stone-300 bg-white text-stone-900 font-semibold placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-teal-700 focus:border-transparent text-base shadow-xs"
                 />
                 <button
                   type="button"
