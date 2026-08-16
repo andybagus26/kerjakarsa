@@ -11,6 +11,7 @@ import {
 import { Navbar } from '@/components/navbar'
 import { WorkerCard } from '@/components/worker-card'
 import { FilterSidebar, type FilterState } from '@/components/filter-sidebar'
+import { MobileFilterModal } from '@/components/mobile-filter-modal'
 import { mockWorkers, type Worker } from '@/lib/data'
 
 // Siklus State: 'closed' -> 'detail' -> 'checkout' -> 'payment' -> 'success'
