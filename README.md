@@ -1,6 +1,6 @@
 # 🚀 KerjaKarsa — Platform Ekosistem Kolaborasi & Pemberdayaan Pekerja Informal Digital
 
-> **Live Demo Vercel**: [https://kerjakarsa.vercel.app](https://kerjakarsa.vercel.app)  
+> **Live Demo Vercel**: [https://kerjakarsa-ebon.vercel.app](https://kerjakarsa-ebon.vercel.app)  
 > **Karya Kompetisi Gemastik XIX (2026)**  
 > **Kategori**: Pengembangan Perangkat Lunak (PPL) / Software Development  
 
