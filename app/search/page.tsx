@@ -11,81 +11,7 @@ import {
 import { Navbar } from '@/components/navbar'
 import { WorkerCard } from '@/components/worker-card'
 import { FilterSidebar, type FilterState } from '@/components/filter-sidebar'
-import { MobileFilterModal } from '@/components/mobile-filter-modal'
-
-interface Worker {
-  id: string;
-  name: string;
-  avatar: string;
-  distance: string;
-  rating: number;
-  reviews: number;
-  verified: boolean;
-  estimatedWage: string;
-  specialty: string;
-  location: string;
-  about: string;
-  skills: string[];
-}
-
-const mockWorkers: Worker[] = [
-  {
-    id: '1',
-    name: 'Budi Santoso',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop',
-    distance: '2.5 km dari lokasi Anda',
-    rating: 4.9,
-    reviews: 124,
-    verified: true,
-    estimatedWage: 'Rp 250.000',
-    specialty: 'Tukang Bangunan Berpengalaman',
-    location: 'Surabaya Barat',
-    about: 'Berpengalaman lebih dari 10 tahun dalam konstruksi rumah tinggal, perbaikan tembok, lantai, dan renovasi gedung komersial.',
-    skills: ['Pemasangan Bata', 'Keramik', 'Pengecatan', 'Baja Ringan', 'Tukang Bangunan']
-  },
-  {
-    id: '2',
-    name: 'Siti Rahayu',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop',
-    distance: '1.8 km dari lokasi Anda',
-    rating: 5.0,
-    reviews: 89,
-    verified: true,
-    estimatedWage: 'Rp 180.000',
-    specialty: 'Pembersih Profesional & Perawatan',
-    location: 'Gresik Kota',
-    about: 'Menyediakan jasa deep cleaning untuk rumah, apartemen, dan kantor. Menggunakan bahan pembersih ramah lingkungan dan alat modern.',
-    skills: ['Deep Cleaning', 'Sanitasi', 'Setrika', 'Organisasi Ruangan', 'Pembersihan']
-  },
-  {
-    id: '3',
-    name: 'Ahmad Wijaya',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop',
-    distance: '3.2 km dari lokasi Anda',
-    rating: 4.8,
-    reviews: 156,
-    verified: true,
-    estimatedWage: 'Rp 320.000',
-    specialty: 'Teknisi Listrik Terlisensi',
-    location: 'Surabaya Timur',
-    about: 'Teknisi listrik tersertifikasi. Mampu menangani instalasi baru, perbaikan korsleting, hingga perakitan panel listrik pintar untuk smart home.',
-    skills: ['Instalasi Kabel', 'Troubleshooting', 'Panel Listrik', 'Smart Home', 'Listrik']
-  },
-  {
-    id: '4',
-    name: 'Rudi Hermawan',
-    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&h=200&fit=crop',
-    distance: '4.1 km dari lokasi Anda',
-    rating: 4.9,
-    reviews: 94,
-    verified: true,
-    estimatedWage: 'Rp 275.000',
-    specialty: 'Teknisi Servis AC & Kulkas',
-    location: 'Surabaya Selatan',
-    about: 'Spesialis cuci AC, isi freon, perbaikan kompresor kulkas, dan instalasi AC split/cassette garansi dingin.',
-    skills: ['Servis AC', 'Cuci AC', 'Isi Freon', 'Perbaikan Kulkas', 'Pendingin']
-  }
-]
+import { mockWorkers, type Worker } from '@/lib/data'
 
 // Siklus State: 'closed' -> 'detail' -> 'checkout' -> 'payment' -> 'success'
 type ModalView = 'detail' | 'checkout' | 'payment' | 'success' | 'closed';
@@ -122,8 +48,29 @@ function SearchPageContent() {
     setModalView('detail')
   }
 
-  const proceedToPayment = () => {
-    setOrderId(`KRJ-${Math.floor(Math.random() * 90000) + 10000}`)
+  const proceedToPayment = async () => {
+    const generatedId = `KRJ-${Math.floor(Math.random() * 90000) + 10000}`
+    setOrderId(generatedId)
+
+    try {
+      const res = await fetch('/api/midtrans/charge', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderId: generatedId,
+          amount: selectedWorker ? selectedWorker.pricePerHour * 6 : 250000,
+          serviceName: selectedWorker ? selectedWorker.specialty : 'Jasa Informal KerjaKarsa',
+          clientName: 'Pencari Jasa KerjaKarsa',
+        }),
+      })
+      const json = await res.json()
+      if (json.success && json.token) {
+        console.log('Midtrans Snap Token Generated:', json.token)
+      }
+    } catch (err) {
+      console.warn('Midtrans API fallback:', err)
+    }
+
     setModalView('payment')
   }
 

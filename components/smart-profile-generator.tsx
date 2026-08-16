@@ -118,30 +118,41 @@ export function SmartProfileGenerator() {
     }, 50)
   }
 
-  const processAIAnalysis = (fullText: string) => {
+  const processAIAnalysis = async (fullText: string) => {
     setStatus('analyzing')
-    
-    // Simulate AI model processing delay
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/ai/voice-profile', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transcript: fullText }),
+      })
+      const json = await res.json()
+
+      if (json.success && json.data) {
+        setGeneratedBio(json.data.bio || `Teknisi profesional: "${fullText.trim()}"`)
+        setGeneratedTags(json.data.tags || ['⭐ Mitra Terverifikasi', '🛠️ Perbaikan Rumah'])
+      } else {
+        throw new Error(json.error || 'AI Failed')
+      }
+    } catch (err) {
+      console.warn('Falling back to local AI rule processor:', err)
       const bioText = fullText.length > 10 
-        ? `Teknisi profesional berpengalaman yang melayani: "${fullText.trim()}". Siap kerja dengan respons cepat dan garansi kepuasan.`
+        ? `Teknisi profesional berpengalaman: "${fullText.trim()}". Siap kerja dengan respons cepat dan garansi kepuasan.`
         : 'Teknisi profesional berpengalaman melayani perbaikan alat elektronik, AC, dan instalasi listrik rumah tangga.'
       
       setGeneratedBio(bioText)
       
-      // Auto extract tags based on transcript keywords
       const tags: string[] = ['⭐ Mitra Terverifikasi']
       if (fullText.toLowerCase().includes('ac')) tags.push('❄️ Servis AC')
       if (fullText.toLowerCase().includes('listrik')) tags.push('⚡ Listrik')
-      if (fullText.toLowerCase().includes('kulkas') || fullText.toLowerCase().includes('elektronik')) tags.push('🔧 Elektronik')
       if (fullText.toLowerCase().includes('surabaya')) tags.push('📍 Area Surabaya')
       if (tags.length <= 2) {
         tags.push('🛠️ Perbaikan Rumah', '📍 Surabaya')
       }
-
       setGeneratedTags(tags)
+    } finally {
       setStatus('completed')
-    }, 1500)
+    }
   }
 
   const saveToProfile = () => {

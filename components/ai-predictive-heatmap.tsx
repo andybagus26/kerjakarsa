@@ -35,53 +35,46 @@ export function AIPredictiveHeatmap() {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }).addTo(map)
 
-      // Heatmap Zones (High Demand Circles)
-      const zones = [
-        {
-          name: 'Zona Surabaya Barat (Tinggi)',
-          coords: [-7.2750, 112.7250] as [number, number],
-          radius: 1200,
-          color: '#ef4444',
-          orders: 14,
-          desc: 'Tinggi permintaan tukang & perbaikan rumah',
-        },
-        {
-          name: 'Zona Gubeng & Tim (Sangat Tinggi)',
-          coords: [-7.2650, 112.7550] as [number, number],
-          radius: 1500,
-          color: '#f97316',
-          orders: 22,
-          desc: 'Tinggi permintaan pembersihan & servis AC',
-        },
-        {
-          name: 'Zona Surabaya Utara (Sedang)',
-          coords: [-7.2350, 112.7400] as [number, number],
-          radius: 1000,
-          color: '#eab308',
-          orders: 8,
-          desc: 'Potensi permintaan jasa logistik',
-        },
-      ]
+      // Fetch Dynamic AI Heatmap Zones from /api/ai/predictive-heatmap
+      fetch('/api/ai/predictive-heatmap')
+        .then((res) => res.json())
+        .then((json) => {
+          if (!isMounted) return
+          const apiZones = json.zones || []
+          
+          apiZones.forEach((z: any) => {
+            const coords: [number, number] = [z.lat, z.lng]
+            const color = z.riskLevel === 'HIGH' ? '#ef4444' : z.riskLevel === 'MEDIUM' ? '#f97316' : '#eab308'
+            const orders = z.ordersCount || Math.floor(z.intensity / 3) || 12
 
-      zones.forEach((zone) => {
-        // Circle Overlay
-        const circle = L.circle(zone.coords, {
-          color: zone.color,
-          fillColor: zone.color,
-          fillOpacity: 0.35,
-          radius: zone.radius,
-        }).addTo(map)
+            const circle = L.circle(coords, {
+              color: color,
+              fillColor: color,
+              fillOpacity: 0.35,
+              radius: z.radius_meters || 1400,
+            }).addTo(map)
 
-        circle.bindPopup(`
-          <div style="padding: 4px;">
-            <h4 style="font-weight: bold; margin-bottom: 4px; color: #1c1917;">${zone.name}</h4>
-            <p style="font-size: 12px; color: #444; margin-bottom: 6px;">${zone.desc}</p>
-            <span style="background-color: ${zone.color}; color: white; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: bold;">
-              ${zone.orders} Pesanan Aktif
-            </span>
-          </div>
-        `)
-      })
+            circle.bindPopup(`
+              <div style="padding: 4px;">
+                <h4 style="font-weight: bold; margin-bottom: 4px; color: #1c1917;">${z.name}</h4>
+                <p style="font-size: 12px; color: #444; margin-bottom: 6px;">${z.description || 'Prediksi zona ramai pesanan AI'}</p>
+                <span style="background-color: ${color}; color: white; padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: bold;">
+                  ${orders} Pesanan Aktif (${z.peakHour || '13:00 WIB'})
+                </span>
+              </div>
+            `)
+          })
+        })
+        .catch((err) => {
+          console.warn('Fallback heatmap render:', err)
+          const fallbackZones = [
+            { name: 'Zona Surabaya Barat (Tinggi)', coords: [-7.2750, 112.7250] as [number, number], radius: 1200, color: '#ef4444', orders: 14, desc: 'Tinggi permintaan tukang & perbaikan rumah' },
+            { name: 'Zona Gubeng & Tim (Sangat Tinggi)', coords: [-7.2650, 112.7550] as [number, number], radius: 1500, color: '#f97316', orders: 22, desc: 'Tinggi permintaan pembersihan & servis AC' },
+          ]
+          fallbackZones.forEach((zone) => {
+            L.circle(zone.coords, { color: zone.color, fillColor: zone.color, fillOpacity: 0.35, radius: zone.radius }).addTo(map)
+          })
+        })
 
       mapInstanceRef.current = map
 

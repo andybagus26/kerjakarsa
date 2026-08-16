@@ -2,14 +2,15 @@
 
 import { useState } from 'react'
 import { Check, Bell } from 'lucide-react'
+import { useRealtimeStatus } from '@/lib/hooks/use-realtime-status'
 
 export function StatusWorkToggle() {
-  const [isActive, setIsActive] = useState(true)
+  const { isActive, updateStatus } = useRealtimeStatus(true)
   const [showToast, setShowToast] = useState(false)
 
   const handleToggle = () => {
     const nextState = !isActive
-    setIsActive(nextState)
+    updateStatus(nextState)
     setShowToast(true)
     setTimeout(() => setShowToast(false), 2500)
   }
