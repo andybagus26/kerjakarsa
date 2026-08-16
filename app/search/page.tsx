@@ -258,7 +258,7 @@ function SearchPageContent() {
         <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-stone-900/40 backdrop-blur-sm p-0 md:p-4 transition-all">
           
           {/* Modal Container */}
-          <div className="bg-white w-full md:w-[500px] h-[85vh] md:h-auto md:max-h-[90vh] rounded-t-3xl md:rounded-3xl flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-bottom-8 md:slide-in-from-bottom-0 md:zoom-in-95 fade-in duration-300">
+          <div className="bg-white w-full md:w-125 h-[85vh] md:h-auto md:max-h-[90vh] rounded-t-3xl md:rounded-3xl flex flex-col overflow-hidden shadow-2xl animate-in slide-in-from-bottom-8 md:slide-in-from-bottom-0 md:zoom-in-95 fade-in duration-300">
             
             {/* Header Modal Dinamis */}
             <div className="flex items-center justify-between p-4 border-b border-stone-100 bg-white z-10 sticky top-0">
