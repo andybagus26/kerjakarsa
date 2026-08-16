@@ -21,7 +21,7 @@ type PaymentMethod = 'qris' | 'va-bca' | 'va-mandiri';
 function SearchPageContent() {
   const searchParams = useSearchParams()
   const urlQuery = searchParams.get('q') || searchParams.get('query') || ''
-  const [searchQuery, setSearchQuery] = useState(urlQuery || 'Tukang Bangunan')
+  const [searchQuery, setSearchQuery] = useState(urlQuery || '')
   const [showMobileFilter, setShowMobileFilter] = useState(false)
   const [filters, setFilters] = useState<FilterState>({
     radius: 10,
