@@ -7,8 +7,8 @@ import { usePathname } from 'next/navigation'
 const navItems = [
   { id: 'home', label: 'Beranda', icon: Home, href: '/' },
   { id: 'orders', label: 'Pesanan Aktif', icon: Package, href: '/dashboard' },
-  { id: 'messages', label: 'Pesan', icon: MessageSquare, href: '#' },
-  { id: 'profile', label: 'Profil', icon: User, href: '#' },
+  { id: 'messages', label: 'Pesan', icon: MessageSquare, href: '/messages' },
+  { id: 'profile', label: 'Profil', icon: User, href: '/profile' },
 ]
 
 export function DashboardSidebar() {
