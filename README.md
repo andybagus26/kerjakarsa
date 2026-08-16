@@ -107,6 +107,29 @@ Akses aplikasi pada peramban web:
 
 ---
 
+## 🎬 Panduan & Bahan Pembuatan Video Demonstrasi Gemastik XIX
+
+Untuk keperluan penyusunan **Video Presentasi & Pitching Produk Gemastik XIX (Durasi Maksimal 3-5 Menit)**, berikut rincian bahan video (*scene-by-scene breakdown*), aset media, serta prompt AI Generatif yang diperlukan:
+
+### 📸 1. Rincian Aset & Prompt AI Generatif Video
+| Scene | Durasi Target | Kebutuhan Bahan / Visual Video | Prompt Generasi AI (Runway Gen-3 / Sora / Midjourney v6) |
+| :--- | :--- | :--- | :--- |
+| **01. Intro & Problem** | `00:00 - 00:30` | Animasi 3D Pixar pekerja informal Indonesia (Tukang AC & Listrik) mengalami kendala pemasaran. | `3D Pixar style animation of an Indonesian AC technician holding a wrench, sitting thoughtfully at a desk, cinematic soft warm lighting, ultra detailed, 8k --ar 16:9` |
+| **02. Voice AI Profile** | `00:30 - 01:15` | Screen recording demo Web Speech API & ekstraksi bio otomatis oleh Google Gemini AI (`gemini-2.5-flash`). | `Close-up shot of a modern smartphone UI showing glowing voice soundwave visualizer with teal gradient background, futuristic tech interface` |
+| **03. Escrow & Midtrans** | `01:15 - 02:00` | Screen recording alur pembayaran Midtrans Snap Gateway & penahanan dana di Escrow Wallet. | `3D isometric render of a glowing digital golden padlock protecting money wallet, green teal color scheme, clean modern fintech aesthetics` |
+| **04. GIS & AI Heatmap** | `02:00 - 02:45` | Screen recording visual peta OpenStreetMap Leaflet.js & zona prediksi pemesanan *heatmap* Surabaya. | `3D interactive map overlay showing glowing red and orange heat demand circles over city buildings, high tech spatial analytics visualization` |
+| **05. Closing & Call to Action** | `02:45 - 03:00` | Animasi Logo 3D KerjaKarsa dengan badge *Cepat, Aman, Terpercaya*. | `Elegant 3D glassmorphic badge logo with golden letter K emblem, floating smoothly in clean studio background with soft shadow` |
+
+---
+
+### 🎙️ 2. Perlengkapan & Software Editing yang Direkomendasikan
+- **Screen Recording**: OBS Studio / Loom (Resolusi minimum 1080p 60fps pada browser resolution 1440x900).
+- **Voiceover Narrator**: Bahasa Indonesia formal-persuasif dengan microfon kondenser/lavalier.
+- **Backsound Audio**: Uplifting Corporate Tech Track (BPM 110-120, Volume 15-20% saat voiceover).
+- **Video Editor**: CapCut Desktop / Premiere Pro / DaVinci Resolve.
+
+---
+
 ## 👥 Tim Pengembang Gemastik XIX
 
 - **Nama Tim**: Tim KerjaKarsa  
