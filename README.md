@@ -107,26 +107,85 @@ Akses aplikasi pada peramban web:
 
 ---
 
-## 🎬 Panduan & Bahan Pembuatan Video Demonstrasi Gemastik XIX
+## 🎬 Panduan & Prompt Google Veo 3 (Max 10s per Footage Clip)
 
-Untuk keperluan penyusunan **Video Presentasi & Pitching Produk Gemastik XIX (Durasi Maksimal 3-5 Menit)**, berikut rincian bahan video (*scene-by-scene breakdown*), aset media, serta prompt AI Generatif yang diperlukan:
-
-### 📸 1. Rincian Aset & Prompt AI Generatif Video
-| Scene | Durasi Target | Kebutuhan Bahan / Visual Video | Prompt Generasi AI (Runway Gen-3 / Sora / Midjourney v6) |
-| :--- | :--- | :--- | :--- |
-| **01. Intro & Problem** | `00:00 - 00:30` | Animasi 3D Pixar pekerja informal Indonesia (Tukang AC & Listrik) mengalami kendala pemasaran. | `3D Pixar style animation of an Indonesian AC technician holding a wrench, sitting thoughtfully at a desk, cinematic soft warm lighting, ultra detailed, 8k --ar 16:9` |
-| **02. Voice AI Profile** | `00:30 - 01:15` | Screen recording demo Web Speech API & ekstraksi bio otomatis oleh Google Gemini AI (`gemini-2.5-flash`). | `Close-up shot of a modern smartphone UI showing glowing voice soundwave visualizer with teal gradient background, futuristic tech interface` |
-| **03. Escrow & Midtrans** | `01:15 - 02:00` | Screen recording alur pembayaran Midtrans Snap Gateway & penahanan dana di Escrow Wallet. | `3D isometric render of a glowing digital golden padlock protecting money wallet, green teal color scheme, clean modern fintech aesthetics` |
-| **04. GIS & AI Heatmap** | `02:00 - 02:45` | Screen recording visual peta OpenStreetMap Leaflet.js & zona prediksi pemesanan *heatmap* Surabaya. | `3D interactive map overlay showing glowing red and orange heat demand circles over city buildings, high tech spatial analytics visualization` |
-| **05. Closing & Call to Action** | `02:45 - 03:00` | Animasi Logo 3D KerjaKarsa dengan badge *Cepat, Aman, Terpercaya*. | `Elegant 3D glassmorphic badge logo with golden letter K emblem, floating smoothly in clean studio background with soft shadow` |
+Setiap klip video di bawah ini dirancang khusus untuk durasi maksimal **10 detik per footage di Google Veo** dengan gaya **3D Pixar Render 8K Cinematic**. Anda dapat mengunduh klip ini dan menggabungkannya di video editor (CapCut / Premiere Pro).
 
 ---
 
-### 🎙️ 2. Perlengkapan & Software Editing yang Direkomendasikan
-- **Screen Recording**: OBS Studio / Loom (Resolusi minimum 1080p 60fps pada browser resolution 1440x900).
-- **Voiceover Narrator**: Bahasa Indonesia formal-persuasif dengan microfon kondenser/lavalier.
-- **Backsound Audio**: Uplifting Corporate Tech Track (BPM 110-120, Volume 15-20% saat voiceover).
-- **Video Editor**: CapCut Desktop / Premiere Pro / DaVinci Resolve.
+### 🎥 1. SCENE 1: PROBLEM & PERMASALAHAN PEKERJA INFORMAL (Total 30s = 3 Clips @10s)
+
+#### 📽️ Clip 1A: Kesulitan Pemasaran & Profil Pekerja (10s)
+> **Prompt Google Veo**:  
+> `A 10-second cinematic 3D Pixar animation of a friendly male Indonesian AC technician in blue uniform sitting at a wooden desk, looking confused while trying to type on his smartphone. Soft warm indoor lighting, shallow depth of field, 8k resolution, smooth 60fps camera pan.`
+
+#### 📽️ Clip 1B: Keraguan Transaksi & Penipuan Uang Muka (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar animation of a female homeowner looking hesitantly at her smartphone screen showing a fake money transfer request, warning alert icon floating in air, soft dramatic lighting, realistic textures, high quality video.`
+
+#### 📽️ Clip 1C: Harapan Platform Digital Terpercaya (10s)
+> **Prompt Google Veo**:  
+> `A 10-second cinematic camera zoom into a glowing smartphone screen displaying the modern KerjaKarsa logo badge with golden K emblem, bright sunny background, uplifting atmosphere, 3D Pixar render, ultra detailed.`
+
+---
+
+### 🎙️ 2. SCENE 2: VOICE AI PROFILE & PEMBERDAYAAN MITRA (Total 30s = 3 Clips @10s)
+
+#### 📽️ Clip 2A: Bicara Suara / Voice Command (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar animation of an Indonesian electrician speaking confidently into his smartphone microphone, colorful animated audio soundwaves radiating out smoothly, vibrant teal and amber lighting effects.`
+
+#### 2B: Ekstraksi Otomatis Google Gemini AI (10s)
+> **Prompt Google Veo**:  
+> `A 10-second futuristic 3D animation showing raw audio voice waves transforming into neat digital text cards like "Servis AC" and "Instalasi Listrik", smooth cybernetic particle transitions, dark background with teal glowing lines.`
+
+#### 📽️ Clip 2C: Profil Profesional Terverifikasi (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar animation of a verified worker profile card appearing on a tablet screen, complete with a green checkmark badge glowing brightly, joyful technician smiling in background, cinematic studio lighting.`
+
+---
+
+### 💳 3. SCENE 3: ESCROW WALLET & MIDTRANS PAYMENT (Total 30s = 3 Clips @10s)
+
+#### 📽️ Clip 3A: Pembayaran Aman Midtrans Snap (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D isometric render of a client tapping a smartphone to make a seamless QRIS payment, glowing blue-green digital coins flowing securely through the air into a digital vault.`
+
+#### 📽️ Clip 3B: Penahanan Dana di Escrow Wallet (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D animation of a stylized golden padlock closing over a digital money pouch labeled Escrow Wallet, green teal aura glowing around it, high security fintech concept, clean studio background.`
+
+#### 📽️ Clip 3C: Pencairan Dana & Kepuasan Mitra (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar animation of an Indonesian worker receiving a instant payment notification on his phone, smiling happily and giving a thumbs up, bright sunlight, cinematic depth of field.`
+
+---
+
+### 🗺️ 4. SCENE 4: GIS TRACKING & PREDIKTIF HEATMAP (Total 30s = 3 Clips @10s)
+
+#### 📽️ Clip 4A: Tracking Live GPS Leaflet.js (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D animation of a mini motorcycle technician icon moving smoothly along a glowing digital map route toward a home pin, high tech GPS navigation interface, cinematic overhead angle.`
+
+#### 📽️ Clip 4B: AI Spatial Demand Heatmap (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D interactive city map showing pulsing red, orange, and yellow demand heatmap circles expanding over city districts, futuristic AI analytics HUD graphics, sleek dark theme.`
+
+#### 📽️ Clip 4C: Kepastian Lokasi & Bebas Penipuan (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar animation of a technician arriving at a client home, shaking hands warmly with the homeowner, safety checkmark icon appearing above, bright outdoor afternoon light.`
+
+---
+
+### 🌟 5. SCENE 5: CLOSING & CALL TO ACTION (Total 20s = 2 Clips @10s)
+
+#### 📽️ Clip 5A: Ekosistem Pemberdayaan Pekerja Informal (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D Pixar group shot of diverse Indonesian informal workers (AC technician, house cleaner, electrician, builder) standing proudly together, golden sunrise background, heroic camera angle.`
+
+#### 📽️ Clip 5B: Logo Brand 3D KerjaKarsa & Tagline (10s)
+> **Prompt Google Veo**:  
+> `A 10-second 3D animation of the KerjaKarsa logo with golden K emblem floating gracefully in center screen, text "Cepat • Aman • Terpercaya" glowing below, cinematic particles, 8k resolution.`
 
 ---
 
